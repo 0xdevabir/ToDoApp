@@ -39,34 +39,6 @@ export function PomodoroBar() {
     setSeconds(phaseDur);
   }, [phaseDur]);
 
-  useEffect(() => {
-    if (!running) return;
-    const id = window.setInterval(() => {
-      setSeconds((s) => {
-        if (s <= 1) {
-          window.clearInterval(id);
-          handlePhaseEnd();
-          return 0;
-        }
-        return s - 1;
-      });
-    }, 1000);
-    return () => window.clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [running]);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === ' ' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        setRunning((r) => !r);
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
-
   const handlePhaseEnd = () => {
     if (!muted) {
       try {
@@ -107,6 +79,34 @@ export function PomodoroBar() {
     }
     startedAtRef.current = null;
   };
+
+  useEffect(() => {
+    if (!running) return;
+    const id = window.setInterval(() => {
+      setSeconds((s) => {
+        if (s <= 1) {
+          window.clearInterval(id);
+          handlePhaseEnd();
+          return 0;
+        }
+        return s - 1;
+      });
+    }, 1000);
+    return () => window.clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [running]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === ' ' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        setRunning((r) => !r);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   const start = () => {
     if (!startedAtRef.current) startedAtRef.current = Date.now();

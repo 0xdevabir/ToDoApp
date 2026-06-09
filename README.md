@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FlowDo — Advanced Interactive Todo
 
-## Getting Started
+A premium, 100% client-side todo app. **No backend, no account, no tracking** — everything lives in your browser's `localStorage` and travels with you.
 
-First, run the development server:
+Built with the latest stable stack:
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack)
+- [React 19](https://react.dev)
+- [Tailwind CSS v4](https://tailwindcss.com) (CSS-first config)
+- [Zustand 5](https://zustand.docs.pmnd.rs/) with `persist` middleware
+- [Framer Motion](https://www.framer.com/motion/) · [dnd-kit](https://dndkit.com) · [recharts](https://recharts.org) · [lucide](https://lucide.dev) · [date-fns](https://date-fns.org) · [sonner](https://sonner.emilkowal.ski)
+
+## Features
+
+- **Smart views** — Today, Upcoming (30 days), Inbox, All, Completed.
+- **Kanban** with drag & drop across To Do / In Progress / Done.
+- **Calendar** — month grid with quick per-day task list.
+- **Analytics** — activity, focus minutes, priority breakdown, list health.
+- **Pomodoro** — focus / short / long phases, task linking, focus mode, daily streak.
+- **Tasks** — title, description, due date, priority, status, recurrence, subtasks, tags, pomodoros planned, attachments-ready schema.
+- **Lists & tags** — colored, emoji-iconed, with smart counts in the sidebar.
+- **Filters** — multi-select priority, status, list, tag, due window, with full-text search and 6 sort modes.
+- **Theming** — light / dark / system, 8 accent colors, density.
+- **PWA** — manifest, app icon, offline service worker.
+- **Keyboard-first** — `N` new task, `⌘K` command palette, `/` search, `1/2/3/4` views, `G`+letter navigation, `?` help.
+- **Import / export** — JSON backup and restore.
+- **Accessible** — focus rings, ARIA labels, skip link, reduced-motion media query.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000> → redirects to **Today**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build
+npm run start   # serve the build
+npm run lint    # eslint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project layout
 
-## Learn More
+```
+app/
+  layout.tsx              root layout, providers, toaster
+  page.tsx                redirects to /today
+  (app)/
+    layout.tsx            shell: sidebar + topbar
+    today/, upcoming/, inbox/, all/, completed/
+    kanban/, calendar/, analytics/
+    list/[id]/, tag/[id]/
+    settings/
+components/
+  ui/                     design-system primitives (Button, Modal, Select, …)
+  shell/                  Sidebar, Topbar, QuickAdd, TaskModal, Pomodoro, Help
+  tasks/                  TaskRow, TaskCard, FilterBar, Kanban, Calendar, Analytics
+  theme-provider.tsx
+lib/
+  store.ts                Zustand store (persist + partialize)
+  types.ts                shared TypeScript types
+  filters.ts              filter/sort helpers
+  constants.ts            priority/status/accent metadata
+  utils.ts                cn, uid, clamp
+  hooks.ts                useDensity, etc.
+  useHydrated.ts
+public/
+  manifest.webmanifest    PWA manifest
+  sw.js                   offline service worker
+  icon.svg, icon.png
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Data model
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tasks, lists, tags, sessions and settings are all persisted under the `flowdo:v1` localStorage key. Reset everything from **Settings → Data → Reset**, or back up via **Export**.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Keyboard shortcuts
 
-## Deploy on Vercel
+| Keys | Action |
+| --- | --- |
+| `N` | New task |
+| `⌘K` / `Ctrl K` | Command palette |
+| `/` | Focus search |
+| `1` / `2` / `3` / `4` | Today / Kanban / Calendar / Analytics |
+| `G` then `T` / `U` / `I` / `A` / `C` / `K` / `L` / `N` / `S` | Navigate to view |
+| `?` | Show all shortcuts |
+| `Space` (in Pomodoro) | Start / pause |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT — do whatever you want, but please don't blame me if your task list becomes addictive.
