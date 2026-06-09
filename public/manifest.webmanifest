@@ -1,0 +1,44 @@
+{
+  "name": "FlowDo — Advanced Todo",
+  "short_name": "FlowDo",
+  "description": "An advanced, interactive todo app that lives in your browser.",
+  "start_url": "/today",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "New task",
+      "url": "/today?new=1",
+      "description": "Quickly add a new task"
+    },
+    {
+      "name": "Today",
+      "url": "/today",
+      "description": "See what's due today"
+    }
+  ]
+}
