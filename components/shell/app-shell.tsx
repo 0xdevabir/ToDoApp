@@ -8,6 +8,7 @@ import { Topbar } from './topbar';
 import { useHydrated } from '@/lib/useHydrated';
 import { useApp } from '@/lib/store';
 import { useDensity } from '@/lib/hooks';
+import { PomodoroBar } from './pomodoro-bar';
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const hydrated = useHydrated();
@@ -31,6 +32,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             </div>
           )}
         </ShortcutsAndPalette>
+        <PomodoroBar />
       </TaskModalProvider>
     </ThemeProvider>
   );
