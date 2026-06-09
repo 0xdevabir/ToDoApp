@@ -9,6 +9,7 @@ import { useHydrated } from '@/lib/useHydrated';
 import { useApp } from '@/lib/store';
 import { useDensity } from '@/lib/hooks';
 import { PomodoroBar } from './pomodoro-bar';
+import { HelpButton } from './help-button';
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const hydrated = useHydrated();
@@ -23,7 +24,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <Sidebar onCreate={openCreate} />
               <div className="flex min-w-0 flex-1 flex-col">
                 <Topbar onCreate={openCreate} onOpenPalette={openPalette} />
-                <main className="flex-1 overflow-y-auto">
+                <main id="main" className="flex-1 overflow-y-auto">
                   <div className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6">
                     {hydrated ? children : <BootSkeleton />}
                   </div>
@@ -33,6 +34,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           )}
         </ShortcutsAndPalette>
         <PomodoroBar />
+        <HelpButton />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded-md focus:bg-[var(--accent)] focus:px-3 focus:py-1.5 focus:text-sm focus:text-white"
+        >
+          Skip to content
+        </a>
       </TaskModalProvider>
     </ThemeProvider>
   );
