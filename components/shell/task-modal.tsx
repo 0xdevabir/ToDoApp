@@ -223,7 +223,7 @@ function TaskModal({
         <div className="flex w-full items-center gap-2">
           <span className="text-base font-semibold">{isNew ? 'New task' : 'Edit task'}</span>
           {!isNew && existing?.status === 'done' && (
-            <Badge className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-300">Done</Badge>
+            <Badge className="!bg-[color:color-mix(in_oklab,var(--success)_18%,transparent)] !text-[color:var(--success)]">Done</Badge>
           )}
         </div>
       }

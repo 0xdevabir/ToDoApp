@@ -171,7 +171,7 @@ export function PomodoroBar() {
             {minutes}:{secs}
           </span>
           {streak > 0 && (
-            <span className="inline-flex items-center gap-0.5 rounded-full bg-orange-500/10 px-1.5 text-[10px] font-semibold text-orange-600 dark:text-orange-300">
+            <span className="inline-flex items-center gap-0.5 rounded-full px-1.5 text-[10px] font-semibold" style={{ background: 'color-mix(in oklab, var(--warning) 18%, transparent)', color: 'var(--warning)' }}>
               <Flame className="h-3 w-3" /> {streak}
             </span>
           )}
@@ -224,7 +224,7 @@ export function PomodoroBar() {
                 cx="50"
                 cy="50"
                 r="45"
-                stroke={phase === 'focus' ? 'var(--accent)' : '#10b981'}
+                stroke={phase === 'focus' ? 'var(--accent)' : 'var(--success)'}
                 strokeWidth="6"
                 fill="none"
                 strokeLinecap="round"
@@ -299,7 +299,7 @@ export function PomodoroBar() {
                   </button>
                 </Tooltip>
                 {streak > 0 && (
-                  <span className="ml-auto inline-flex items-center gap-0.5 text-xs font-semibold text-orange-600 dark:text-orange-300">
+                  <span className="ml-auto inline-flex items-center gap-0.5 text-xs font-semibold" style={{ color: 'var(--warning)' }}>
                     <Flame className="h-3 w-3" /> {streak}d
                   </span>
                 )}

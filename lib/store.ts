@@ -57,7 +57,7 @@ const defaultFilters: Filters = {
 
 const defaultSettings: Settings = {
   theme: 'system',
-  accent: 'indigo',
+  accent: 'amber',
   density: 'comfortable',
   defaultView: 'list',
   pomodoroFocusMin: 25,
@@ -74,17 +74,17 @@ const defaultSettings: Settings = {
 function defaultLists(): List[] {
   const now = new Date().toISOString();
   return [
-    { id: 'inbox', name: 'Inbox', emoji: '📥', color: '#6366f1', createdAt: now },
-    { id: 'personal', name: 'Personal', emoji: '🌿', color: '#10b981', createdAt: now },
-    { id: 'work', name: 'Work', emoji: '💼', color: '#0ea5e9', createdAt: now },
+    { id: 'inbox', name: 'Inbox', emoji: '📥', color: '#5a6b78', createdAt: now },
+    { id: 'personal', name: 'Personal', emoji: '🌿', color: '#6c8a5e', createdAt: now },
+    { id: 'work', name: 'Work', emoji: '💼', color: '#b88534', createdAt: now },
   ];
 }
 
 function defaultTags(): Tag[] {
   return [
-    { id: 't_urgent', name: 'urgent', color: '#ef4444' },
-    { id: 't_focus', name: 'focus', color: '#8b5cf6' },
-    { id: 't_quick', name: 'quick-win', color: '#10b981' },
+    { id: 't_urgent', name: 'urgent', color: '#a8412f' },
+    { id: 't_focus', name: 'focus', color: '#7a4f6b' },
+    { id: 't_quick', name: 'quick-win', color: '#6c8a5e' },
   ];
 }
 

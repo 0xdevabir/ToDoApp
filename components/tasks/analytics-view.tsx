@@ -144,7 +144,7 @@ export function AnalyticsView() {
                 <ReTooltip contentStyle={tooltipStyle} cursor={{ fill: 'var(--accent-soft)' }} />
                 <Legend wrapperStyle={{ fontSize: 12, color: 'var(--fg-muted)' }} />
                 <Bar dataKey="created" name="Created" fill="var(--accent)" radius={[6, 6, 0, 0]} />
-                <Bar dataKey="done" name="Completed" fill="#10b981" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="done" name="Completed" fill="var(--success)" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -169,12 +169,12 @@ export function AnalyticsView() {
                       key={i}
                       fill={
                         d.color === 'low'
-                          ? '#0ea5e9'
+                          ? '#8a9aa0'
                           : d.color === 'medium'
-                            ? '#f59e0b'
+                            ? '#b88534'
                             : d.color === 'high'
-                              ? '#f97316'
-                              : '#f43f5e'
+                              ? '#c2733a'
+                              : '#a8412f'
                       }
                     />
                   ))}

@@ -54,15 +54,7 @@ export interface Tag {
   color: string;
 }
 
-export type AccentColor =
-  | 'indigo'
-  | 'violet'
-  | 'pink'
-  | 'rose'
-  | 'amber'
-  | 'emerald'
-  | 'cyan'
-  | 'sky';
+export type AccentColor = 'amber' | 'sand' | 'sage' | 'plum' | 'ink' | 'slate';
 
 export type Density = 'comfortable' | 'compact';
 

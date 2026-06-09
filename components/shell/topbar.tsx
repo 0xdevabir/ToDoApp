@@ -36,7 +36,7 @@ export function Topbar({
   };
 
   const cycleAccent = () => {
-    const order: AccentColor[] = ['indigo', 'violet', 'pink', 'rose', 'amber', 'emerald', 'cyan', 'sky'];
+    const order: AccentColor[] = ['amber', 'sand', 'sage', 'plum', 'ink', 'slate'];
     const next = order[(order.indexOf(accent) + 1) % order.length];
     setSettings({ accent: next });
   };
